@@ -27,7 +27,7 @@ plot(vwc.nls, resid(.) ~ fitted(.) | sid, abline = 0, grid=F)
 # No pooling model <nlsList> ----------------------------------------------
 gwrc <- groupedData(vwc ~ pf | sid, as.data.frame(wrc))
 vwc.lis <- nlsList(vwc~SSbiexp(pf,s1,r1,s2,r2), gwrc) 
-plot(augPred(vwc.lis, level=0:1)) ## plot of site/sid level fits
+plot(augPred(vwc.lis, level=0:1), xlab ="pF (bars)", ylab = "Volumetric water content") ## plot of site/sid level fits
 plot(intervals(vwc.lis))
 
 # Random effects model <nlme> ---------------------------------------------
@@ -37,7 +37,7 @@ vwc.nlme <- nlme(vwc~SSbiexp(pf,s1,r1,s2,r2), data = gwrc,
                  random = pdDiag(s1+r1+s2+r2~1), 
                  start = c(s1 = init[1], r1 = init[2], s2 = init[3], r2 = init[4])) 
 summary(vwc.nlme) 
-plot(augPred(vwc.nlme, level=0:1)) ## plot of site/sid level fits
+plot(augPred(vwc.nlme, level=0:1), xlab ="pF (bars)", ylab = "Volumetric water content") ## plot of site/sid level fits
 
 # plot of overall <nlme> fit
 par(pty="s")
