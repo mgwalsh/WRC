@@ -40,7 +40,8 @@ summary(vwc.nlme)
 plot(augPred(vwc.nlme, level=0:1), xlab ="pF (bars)", ylab = "Volumetric water content") ## plot of site/sid level fits
 
 # plot of overall <nlme> fit
-par(pty="s")
-plot(gwrc$vwc ~ fitted(vwc.nlme), xlim = c(0,0.8), ylim = c(0,0.8), xlab = "fitted", ylab = "measured")
+par(pty="s", mfrow = c(1,2))
+plot(gwrc$vwc ~ fitted(vwc.nlme), xlim = c(0,0.8), ylim = c(0,0.8), xlab = "Fitted", ylab = "Measured")
 abline(c(0,1))
-plot(resid(vwc.nlme) ~ fitted(vwc.nlme), xlab="fiited", ylab = "residual") ## residual plot
+plot(resid(vwc.nlme) ~ fitted(vwc.nlme), xlim = c(0,0.8), xlab="Fitted", ylab = "Residual") ## residual plot
+
