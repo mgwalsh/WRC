@@ -37,7 +37,7 @@ vwc.nlme <- nlme(vwc~SSbiexp(pf,s1,r1,s2,r2), data = gwrc,
                  random = pdDiag(s1+r1+s2+r2~1), 
                  start = c(s1 = init[1], r1 = init[2], s2 = init[3], r2 = init[4])) 
 summary(vwc.nlme) 
-plot(augPred(vwc.nlme, level=0:1), xlab ="pF (bars)", ylab = "Volumetric water content") ## plot of site/sid level fits
+plot(augPred(vwc.nlme, level=0:1), xlab ="pF (bars)", ylab = "Volumetric water content (v/v)") ## plot of site/sid level fits
 
 # plot of overall <nlme> fit
 par(pty="s", mfrow = c(1,2))
