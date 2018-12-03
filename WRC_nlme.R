@@ -1,5 +1,5 @@
 # 2-compartment soil water-retention curve model with random soil/site effects
-# note that this is a starter setup using partial data from central Kenya, using the <nlmer> package
+# note that this is a starter setup using partial data from central Kenya, using the <nlme> package
 # M. Walsh, November 2018
 
 # Required packages
