@@ -1,9 +1,9 @@
 # 2-compartment soil water-retention curve model with random soil/site effects
-# note that this is a starter setup with partial data from central Kenya, using the <nlme> package
+# note that this is a starter setup with only partial data from central Kenya, using the <nlme> package
 # M. Walsh, November 2018
 
 # Required packages
-# install.packages(c("downloader","nlme","lattice")), dependencies=TRUE)
+# install.packages(c("downloader","nlme","lattice")), dependencies=TRUE) ## install needed packages
 suppressPackageStartupMessages({
   require(downloader)
   require(nlme)
@@ -16,6 +16,7 @@ dir.create("KE_wrc", showWarnings = F)
 setwd("./KE_wrc")
 
 # download data
+# note that these have been formatted into a "tidy" long format ...
 download("https://www.dropbox.com/s/jgas6v78z5cfkks/KE_test.csv?raw=1", "KE_test.csv", mode = "wb")
 wrc <- read.table("KE_test.csv", header = T, sep = ",") ## load "tidy" (long) version of the original data
 
