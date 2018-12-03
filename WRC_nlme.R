@@ -17,7 +17,7 @@ setwd("./KE_wrc")
 
 # download data
 download("https://www.dropbox.com/s/jgas6v78z5cfkks/KE_test.csv?raw=1", "KE_test.csv", mode = "wb")
-wrc <- read.table("KE_test.csv", header = T, sep = ",")
+wrc <- read.table("KE_test.csv", header = T, sep = ",") ## load "tidy" (long) version of the original data
 
 # Complete pooling model <nls> --------------------------------------------
 vwc.nls <- nls(vwc~SSbiexp(pf,s1,r1,s2,r2), data=wrc) 
