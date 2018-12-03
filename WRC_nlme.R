@@ -22,7 +22,6 @@ wrc <- read.table("KE_test.csv", header = T, sep = ",")
 # Complete pooling model <nls> --------------------------------------------
 vwc.nls <- nls(vwc~SSbiexp(pf,s1,r1,s2,r2), data=wrc) 
 summary(vwc.nls)
-plot(vwc.nls, sid~resid(.), abline=0) 
 plot(vwc.nls, resid(.) ~ fitted(.) | sid, abline = 0, grid=F)
 
 # No pooling model <nlsList> ----------------------------------------------
