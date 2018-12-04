@@ -21,18 +21,18 @@ download("https://www.dropbox.com/s/jgas6v78z5cfkks/KE_test.csv?raw=1", "KE_test
 wrc <- read.table("KE_test.csv", header = T, sep = ",") ## load "tidy" (long) version of the original data
 
 # Complete pooling model <nls> --------------------------------------------
-vwc.nls <- nls(vwc~SSbiexp(pf,s1,r1,s2,r2), data=wrc) 
+vwc.nls <- nls(vwc~SSbiexp(pf,s1,r1,s2,r2), data = wrc) 
 summary(vwc.nls)
 plot(vwc.nls, resid(.) ~ fitted(.) | sid, abline = 0, grid=F)
 
 # No pooling model <nlsList> ----------------------------------------------
 gwrc <- groupedData(vwc ~ pf | sid, as.data.frame(wrc))
 vwc.lis <- nlsList(vwc~SSbiexp(pf,s1,r1,s2,r2), gwrc) 
-plot(augPred(vwc.lis, level=0:1), xlab ="pF (bars)", ylab = "Volumetric water content") ## plot of site/sid level fits
+plot(augPred(vwc.lis, level=0:1), xlab ="pF (bars)", ylab = "Volumetric water content (v/v)") ## plot of site/sid level fits
 plot(intervals(vwc.lis))
 
 # Random effects model <nlme> ---------------------------------------------
-init <- getInitial(vwc~SSbiexp(pf,s1,r1,s2,r2), gwrc) 
+init <- getInitial(vwc~SSbiexp(pf,s1,r1,s2,r2), gwrc) ## initial parameter estimates
 vwc.nlme <- nlme(vwc~SSbiexp(pf,s1,r1,s2,r2), data = gwrc, 
                  fixed = s1+r1+s2+r2~1, 
                  random = pdDiag(s1+r1+s2+r2~1), 
