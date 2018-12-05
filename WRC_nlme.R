@@ -32,7 +32,7 @@ plot(augPred(vwc.lis, level=0:1), xlab = "pF (bars)", ylab = "Volumetric water c
 plot(intervals(vwc.lis))
 
 # Random effects model <nlme> ---------------------------------------------
-init <- getInitial(vwc~SSbiexp(pf,s1,r1,s2,r2), gwrc) ## initial parameter estimates
+init <- getInitial(vwc~SSbiexp(pf,s1,r1,s2,r2), gwrc) ## initial biexponential parameter estimates
 vwc.nlme <- nlme(vwc~SSbiexp(pf,s1,r1,s2,r2), data = gwrc, 
                  fixed = s1+r1+s2+r2~1, 
                  random = pdDiag(s1+r1+s2+r2~1), 
